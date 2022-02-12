@@ -1,9 +1,0 @@
-.btn {
-  margin-right: 10px;
-  text-transform: capitalize;
-}
-.btn:hover {
-  background-color: blue;
-  color: white;
-  border-radius: 3px;
-}
