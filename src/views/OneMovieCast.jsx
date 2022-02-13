@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, NavLink } from 'react-router-dom';
+// import { useParams, NavLink } from 'react-router-dom';
 import { FetchMovieCast } from 'utils/FetchMovieCast';
 
 function OneMovieCast({ movieId }) {

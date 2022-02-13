@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useRouteMatch, useLocation, Routes, Route } from 'react-router-dom';
+// import { useRouteMatch, useLocation, Routes, Route } from 'react-router-dom';
 import { useParams, NavLink } from 'react-router-dom';
 import { FetchMovieDetails } from 'utils/FetchMovieDetails';
 import OneMovieCast from './OneMovieCast';
@@ -8,7 +8,7 @@ import OneMovieReviews from './OneMovieReviews';
 function OneMovieView() {
   const { movieId } = useParams();
   // const { url } = useRouteMatch();
-  const { pathname } = useLocation();
+  // const { pathname } = useLocation();
 
   const [movie, setMovie] = useState(null);
   // console.log('movieId :>> ', movieId);
