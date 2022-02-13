@@ -7,7 +7,7 @@ function OneMovieReviews({ movieId }) {
 
   useEffect(() => {
     FetchMovieReviews(Number(movieId)).then(data => setReviews(data));
-  }, []);
+  }, [movieId]);
   // console.log('reviews :>> ', reviews);
 
   return (

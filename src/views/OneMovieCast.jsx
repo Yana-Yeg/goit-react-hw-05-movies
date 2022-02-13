@@ -7,7 +7,7 @@ function OneMovieCast({ movieId }) {
 
   useEffect(() => {
     FetchMovieCast(Number(movieId)).then(data => setCast(data));
-  }, []);
+  }, [movieId]);
   console.log('movieCast :>> ', cast);
 
   return (
