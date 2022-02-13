@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, NavLink } from 'react-router-dom';
+// import { useParams, NavLink } from 'react-router-dom';
 import { FetchMovieReviews } from 'utils/FetchMovieReviews';
 
 function OneMovieReviews({ movieId }) {
