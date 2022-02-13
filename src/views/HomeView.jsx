@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { GetMovies } from 'utils/FetchApi';
 // import Text from './Text';
 
-export default HomeView => {
+function HomeView() {
   //   const { url } = useRouteMatch();
   // const { pathname } = useLocation();
   const [movies, setMovies] = useState(null);
@@ -34,5 +34,7 @@ export default HomeView => {
         ))}
     </>
   );
-};
+}
+
+export default HomeView;
 // to={`/${pathname}/${el.id}`}
