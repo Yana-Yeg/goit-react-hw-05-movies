@@ -1,25 +1,23 @@
 import axios from 'axios';
-// https://api.themoviedb.org/3/movie/550?api_key=b2c3269bd358b01baf914c84972bca6a
-//api.themoviedb.org/3/movie/550?api_key=b2c3269bd358b01baf914c84972bca6a&callback=test
+// https://api.themoviedb.org/3/search/movie?api_key=b2c3269bd358b01baf914c84972bca6a&language=en-US&page=1&include_adult=false&query=tom
 
-https: axios.defaults.baseURL = ' https://api.themoviedb.org/3/movie/';
-const setParams = ({}) =>
+axios.defaults.baseURL = 'https://api.themoviedb.org/3';
+const setParams = query =>
   (axios.defaults.params = {
-    // q,
+    query,
     api_key: 'b2c3269bd358b01baf914c84972bca6a',
-    callback: 'test',
   });
 
-export const fetch = () => {
-  setParams({});
+export const FetchMovieByName = query => {
+  setParams(query);
   return axios
-    .get('550')
+    .get('/search/movie')
     .then(res => {
       //   if (!res.data.hits.length) {
       //     throw new Error('Not found');
       //   }npm install react-router-dom
-      console.log('res :>> ', res);
-      return res;
+      console.log('FetchMovieByName :>> ', res.data.results);
+      return res.data.results;
     })
     .catch(err => {
       throw err;
