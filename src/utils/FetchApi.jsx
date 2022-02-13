@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // https://api.themoviedb.org/3/trending/all/day?api_key=<<api_key>>
 
-https: axios.defaults.baseURL = 'https://api.themoviedb.org/3';
+axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 const setParams = () =>
   (axios.defaults.params = {
     // q,
