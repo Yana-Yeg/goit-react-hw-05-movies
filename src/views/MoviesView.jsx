@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FetchMovieByName } from 'utils/FetchMovieByName';
 
 function MoviesView() {
-  const { movieId } = useParams();
+  // const { movieId } = useParams();
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState(null);
 
