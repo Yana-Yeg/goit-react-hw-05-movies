@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 // import { useRouteMatch, useLocation, Routes, Route } from 'react-router-dom';
-import { useParams, NavLink } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { FetchMovieDetails } from 'utils/FetchMovieDetails';
 import OneMovieCast from './OneMovieCast';
 import OneMovieReviews from './OneMovieReviews';
