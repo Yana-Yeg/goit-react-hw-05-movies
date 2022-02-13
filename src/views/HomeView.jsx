@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Link, useRouteMatch, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+// import {  useRouteMatch, useLocation } from 'react-router-dom';
 import { GetMovies } from 'utils/FetchApi';
 // import Text from './Text';
 
 export default HomeView => {
   //   const { url } = useRouteMatch();
-  const { pathname } = useLocation();
+  // const { pathname } = useLocation();
   const [movies, setMovies] = useState(null);
 
   useEffect(() => {
