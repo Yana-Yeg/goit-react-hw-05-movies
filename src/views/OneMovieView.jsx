@@ -11,11 +11,11 @@ function OneMovieView() {
   const { pathname } = useLocation();
 
   const [movie, setMovie] = useState(null);
-  console.log('movieId :>> ', movieId);
+  // console.log('movieId :>> ', movieId);
   useEffect(() => {
     FetchMovieDetails(Number(movieId)).then(data => setMovie(data));
-  }, []);
-  console.log('movieDetails :>> ', movie);
+  }, [movieId]);
+  // console.log('movieDetails :>> ', movie);
 
   return (
     <>
