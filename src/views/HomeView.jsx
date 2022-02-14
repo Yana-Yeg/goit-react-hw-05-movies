@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { GetMovies } from 'utils/FetchApi';
 
-function HomeView() {
+function HomePage() {
   const [movies, setMovies] = useState(null);
 
   useEffect(() => {
@@ -26,4 +26,4 @@ function HomeView() {
   );
 }
 
-export default HomeView;
+export default HomePage;

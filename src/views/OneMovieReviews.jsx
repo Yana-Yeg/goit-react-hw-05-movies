@@ -28,6 +28,5 @@ function OneMovieReviews({ movieId }) {
 }
 
 export default OneMovieReviews;
-{
-  /* <Link to={`/movies/${el.id}`}>{el.original_title}</Link> */
-}
+
+// <Link to={`/movies/${el.id}`}>{el.original_title}</Link>
