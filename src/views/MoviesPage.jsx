@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FetchMovieByName } from 'utils/FetchMovieByName';
+import { FetchMovieByName } from 'utils/FetchApi';
 
-function MoviesView() {
-  // const { movieId } = useParams();
+function MoviesPage() {
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState(null);
 
@@ -29,18 +28,21 @@ function MoviesView() {
           type="text"
           value={query}
           onChange={handleQueryChange}
-          style={{ width: '200px', marginLeft: '20px' }}
+          className="moviesPage_input"
         />
         <button type="submit">Search</button>
       </form>
-      {movies &&
-        movies.map(el => (
-          <li key={el.id}>
-            <Link to={`/movies/${el.id}`}>{el.original_title}</Link>
-          </li>
-        ))}
+      {movies && (
+        <ul className="moviesPage_list">
+          {movies.map(el => (
+            <li key={el.id}>
+              <Link to={`/movies/${el.id}`}>{el.original_title}</Link>
+            </li>
+          ))}
+        </ul>
+      )}
     </>
   );
 }
 
-export default MoviesView;
+export default MoviesPage;

@@ -23,5 +23,34 @@ code {
 }
 .activeLink {
   composes: link;
-  color: blue !important;
+  color: tomato !important;
+}
+a {
+  text-decoration: none;
+}
+.homeView_Wrapper {
+  padding-left: 20px;
+  font-size: 16px;
+}
+.moviesPage_input {
+  width: 200px;
+  margin-left: 20px;
+}
+.moviesPage_list {
+  padding-left: 40px;
+  font-size: 16px;
+}
+.OneMovieViewDetails_link {
+  display: block;
+  margin: 10px;
+  font-size: 18px;
+}
+.oneMovieViewDetails_wrap {
+  display: flex;
+  margin-right: 20px;
+}
+.oneMovie_item {
+  margin-left: 10px;
+  font-size: 18px;
+  list-style-type: none;
 }
