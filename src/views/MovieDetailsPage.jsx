@@ -1,11 +1,23 @@
-import { useState, useEffect } from 'react';
-import { useRouteMatch, Route, useParams, Link } from 'react-router-dom';
+import { useState, useEffect, lazy, Suspense } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
+import { useRouteMatch, Route, useParams } from 'react-router-dom';
 import { FetchMovieDetails } from 'utils/FetchApi';
-import OneMovieCast from './OneMovieCast';
-import OneMovieReviews from './OneMovieReviews';
-import OneMovieViewDetails from './OneMovieViewDetails';
+
+const OneMovieCast = lazy(() =>
+  import('./OneMovieCast.jsx' /* webpackChunkName :"one-movies-cast" */)
+);
+const OneMovieReviews = lazy(() =>
+  import('./OneMovieReviews.jsx' /* webpackChunkName :"one-movies-reviews" */)
+);
+const OneMovieViewDetails = lazy(() =>
+  import(
+    './OneMovieViewDetails.jsx' /* webpackChunkName :"one-movie-details-page" */
+  )
+);
 
 function OneMovieView() {
+  const history = useHistory();
+  const location = useLocation();
   const { movieId } = useParams();
   const { path } = useRouteMatch();
   const [movie, setMovie] = useState(null);
@@ -15,20 +27,32 @@ function OneMovieView() {
   }, [movieId]);
   // console.log('movieDetails :>> ', movie);
 
+  const handleGoBack = () => {
+    history.push(location.state.from);
+    // history.goBack();
+  };
   return (
     <>
       {movie && (
         <>
-          <Link to="/" style={{ display: 'block', padding: '5px' }}>
+          <button
+            type="button"
+            onClick={handleGoBack}
+            style={{ display: 'block', margin: '5px' }}
+          >
             Go Back
-          </Link>
-          <OneMovieViewDetails movie={movie} />
-          <Route path={`${path}/cast`}>
-            <OneMovieCast movieId={movieId} />
-          </Route>
-          <Route path={`${path}/reviews`}>
-            <OneMovieReviews movieId={movieId} />
-          </Route>
+          </button>
+
+          <Suspense fallback={<h1>LOADING...</h1>}>
+            <OneMovieViewDetails movie={movie} />
+
+            <Route path={`${path}/cast`}>
+              <OneMovieCast movieId={movieId} />
+            </Route>
+            <Route path={`${path}/reviews`}>
+              <OneMovieReviews movieId={movieId} />
+            </Route>
+          </Suspense>
         </>
       )}
     </>

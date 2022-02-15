@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { GetMovies } from 'utils/FetchApi';
 
 function HomePage() {
   const [movies, setMovies] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
     GetMovies().then(data => {
@@ -18,7 +20,15 @@ function HomePage() {
         {movies &&
           movies.map(el => (
             <li key={el.id}>
-              <Link to={`/movies/${el.id}`}>{el.original_title}</Link>
+              <Link
+                // to={`/movies/${el.id}`}
+                to={{
+                  pathname: '/movies/' + el.id,
+                  state: { from: location },
+                }}
+              >
+                {el.original_title}
+              </Link>
             </li>
           ))}
       </ul>

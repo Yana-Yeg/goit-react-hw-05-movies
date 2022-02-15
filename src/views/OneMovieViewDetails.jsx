@@ -1,6 +1,7 @@
-import { useRouteMatch, Link } from 'react-router-dom';
+import { useRouteMatch, Link, useLocation } from 'react-router-dom';
 
 function OneMovieViewDetails({ movie }) {
+  const location = useLocation();
   const { url } = useRouteMatch();
   const genresArr = movie.genres.map(el => el.name).join(' ');
 
@@ -31,10 +32,22 @@ function OneMovieViewDetails({ movie }) {
         <hr />
 
         <h2>Additional information</h2>
-        <Link to={`${url}/cast`} className="OneMovieViewDetails_link">
+        <Link
+          to={{
+            pathname: url + '/cast',
+            state: { from: location.state.from },
+          }}
+          className="OneMovieViewDetails_link"
+        >
           Cast:
         </Link>
-        <Link to={`${url}/reviews`} className="OneMovieViewDetails_link">
+        <Link
+          to={{
+            pathname: `${url}/reviews`,
+            state: { from: location.state.from },
+          }}
+          className="OneMovieViewDetails_link"
+        >
           Reviews:
         </Link>
       </div>
