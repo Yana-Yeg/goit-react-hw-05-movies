@@ -11,19 +11,26 @@ function MoviesPage() {
   // console.log('queryS', queryS);
 
   const [movies, setMovies] = useState(null);
+  const [err, setErr] = useState(null);
 
   const setSearch = input => {
     history.push({ pathname: '/movies', search: '?query=' + input }); //обновился query
   };
 
   useEffect(() => {
-    query && FetchMovieByName(query).then(data => setMovies(data));
+    setErr(null);
+    setMovies([]);
+    query &&
+      FetchMovieByName(query)
+        .then(data => setMovies(data))
+        .catch(error => setErr(error.message));
   }, [query]);
 
   return (
     <>
       <br />
       <Form setSearch={setSearch} />
+      {err && <h1>Not found</h1>}
       {movies && (
         <ul className="moviesPage_list">
           {movies.map(el => (

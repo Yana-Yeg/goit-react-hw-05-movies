@@ -29,6 +29,10 @@ export const FetchMovieByName = query => {
     .get('/search/movie')
     .then(res => {
       // console.log('FetchMovieByName :>> ', res.data.results);
+      if (!res.data.results.length) {
+        throw new Error('Not found');
+      }
+      // console.log('FetchMovieByName :>> ', res.data.results);
       return res.data.results;
     })
     .catch(err => {
