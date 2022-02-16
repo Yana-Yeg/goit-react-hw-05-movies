@@ -3,6 +3,7 @@ import { useLocation, useHistory, Link } from 'react-router-dom';
 import qs from 'query-string';
 import { FetchMovieByName } from 'utils/FetchApi';
 import Form from './Form';
+import ItemsPage from './ItemsPage';
 
 function MoviesPage() {
   const history = useHistory();
@@ -31,23 +32,9 @@ function MoviesPage() {
       <br />
       <Form setSearch={setSearch} />
       {err && <h1>Not found</h1>}
-      {movies && (
-        <ul className="moviesPage_list">
-          {movies.map(el => (
-            <li key={el.id}>
-              <Link
-                to={{
-                  pathname: '/movies/' + el.id,
-                  state: { from: location },
-                }}
-                // {`/movies/${el.id}`}
-              >
-                {el.original_title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
+      <ul className="moviesPage_list">
+        {movies && <ItemsPage movies={movies} />}
+      </ul>
     </>
   );
 }

@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { GetMovies } from 'utils/FetchApi';
+import ItemsPage from './ItemsPage';
 
 function HomePage() {
   const [movies, setMovies] = useState(null);
-  const location = useLocation();
+  // const location = useLocation();
 
   useEffect(() => {
     GetMovies().then(data => {
@@ -16,22 +17,7 @@ function HomePage() {
   return (
     <div className="homeView_Wrapper">
       <h1>Tranding today</h1>
-      <ul>
-        {movies &&
-          movies.map(el => (
-            <li key={el.id}>
-              <Link
-                // to={`/movies/${el.id}`}
-                to={{
-                  pathname: '/movies/' + el.id,
-                  state: { from: location },
-                }}
-              >
-                {el.original_title}
-              </Link>
-            </li>
-          ))}
-      </ul>
+      <ul>{movies && <ItemsPage movies={movies} />}</ul>
     </div>
   );
 }
