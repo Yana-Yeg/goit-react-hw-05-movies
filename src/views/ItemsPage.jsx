@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-function ItemsPage({ movies, children }) {
+function ItemsPage({ movies }) {
   const location = useLocation();
   return movies.map(el => (
     <li key={el.id}>

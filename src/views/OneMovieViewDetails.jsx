@@ -9,12 +9,6 @@ function OneMovieViewDetails({ movie }) {
     <>
       <div>
         <div key={movie.id} className="oneMovieViewDetails_wrap">
-          {/* <Link
-              path={`/movies/${movieId}`}
-              className=""
-              style={{ color: 'blue' }}
-            >
-            </Link> */}
           <img
             src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
             alt={movie.original_title}
@@ -35,7 +29,7 @@ function OneMovieViewDetails({ movie }) {
         <Link
           to={{
             pathname: url + '/cast',
-            state: { from: location.state.from },
+            state: { from: location.state?.from || '/' },
           }}
           className="OneMovieViewDetails_link"
         >
@@ -44,7 +38,7 @@ function OneMovieViewDetails({ movie }) {
         <Link
           to={{
             pathname: `${url}/reviews`,
-            state: { from: location.state.from },
+            state: { from: location.state?.from || '/' },
           }}
           className="OneMovieViewDetails_link"
         >

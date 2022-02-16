@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useLocation, useHistory, Link } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import qs from 'query-string';
 import { FetchMovieByName } from 'utils/FetchApi';
 import Form from './Form';
