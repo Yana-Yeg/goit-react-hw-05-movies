@@ -1,4 +1,4 @@
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import { Navigation } from 'components/Navigation/Navigation';
 
@@ -29,9 +29,7 @@ export default function App() {
           <Route path="/movies">
             <MoviesPage />
           </Route>
-          <Route>
-            <HomeView />
-          </Route>
+          <Redirect to="/" />
         </Switch>
       </Suspense>
     </>
